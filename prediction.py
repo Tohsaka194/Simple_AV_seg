@@ -1,6 +1,4 @@
-from foundation_model.model import *
-from analysis.filter.filter_3D import frangi_filter_scan, frangi_filter
-from analysis.filter.frangi_gpu import frangi_filter_gpu
+from frangi_gpu import frangi_filter_gpu
 import torch.nn.functional as F
 from monai.inferers import SlidingWindowInferer, sliding_window_inference
 from visualization.view_3D import *
@@ -134,7 +132,7 @@ def predict_whole_av(ct_array, artery_p=None, vein_p=None, lung=None):
 
 
 def predict_airway_test(ct_array, lung=None):
-    model = MedNeXt_seg(in_channels=2,
+    model = MedNeXt(in_channels=2,
                         n_channels=24,
                         n_classes=1,
                         exp_r=[2, 4, 8, 16, 16],
@@ -155,7 +153,7 @@ def predict_airway_test(ct_array, lung=None):
 
         ct_array = ct_array[x_min:x_max, y_min:y_max, z_min:z_max]
 
-    filtered = frangi_filter(ct_array)
+    filtered = frangi_filter_gpu(ct_array)
     # filtered = frangi_filter_gpu(ct_array, transfer_device=True, transpose=True, device=device)
     input_ct = torch.tensor(np.stack((ct_array, filtered), axis=0)[np.newaxis]).to(torch.float).half()
 
