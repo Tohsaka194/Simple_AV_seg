@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from monai.inferers import SlidingWindowInferer, sliding_window_inference
 from visualization.view_3D import *
 import numpy as np
-from HiPaS.release.models import *
+from .models import *
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 device = torch.device("cuda:0")
