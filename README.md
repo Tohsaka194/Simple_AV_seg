@@ -5,7 +5,7 @@ This repository provides an unofficial implementation for artery-vein segmentati
 You can run **`prediction.py`** to perform artery-vein segmentation.  
 All checkpoints can be downloaded from the following link: [Zenodo](https://zenodo.org/records/17073997).  
 
-Alternatively, you can run **`prediction.CARVE.py`**, which uses our model trained on the **CARVE** dataset for intra-pulmonary artery-vein segmentation.  
+Alternatively, you can run **`prediction_CARVE.py`**, which uses our model trained on the **CARVE** dataset for intra-pulmonary artery-vein segmentation.  
 
 ---
 
